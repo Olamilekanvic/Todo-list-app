@@ -1,0 +1,24 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Home | {% endblock title %}
+{% block nav %}
+    <a href="{% url 'add' %}" class="p-3 bg-emerald-400 text-white text-xl rounded-xl">+</a>
+    <span> Hello, {{request.user}}</span>
+    <span><a href="{% url 'logout' %}">Logout</a></span>
+{% endblock nav %}
+
+
+{% block content%}
+    {% for task in tasks %}
+        <h3>{{ task.title }}</h3>
+        <h4>{{ task.created_at }}</h4>
+        <a href="{% url 'edit' task.id %}"> Edit</a>
+        <a href=""> Done</a>
+        <a href="{% url 'delete' task.id %}"> Delete</a>
+
+    {% empty %}
+        <a href="{% url 'add' %}"> Add your first task</a>
+
+    {% endfor %}
+
+{% endblock content%}

@@ -1,0 +1,30 @@
+{% extends 'todo/base.html' %}
+{% block title %}Login | {% endblock title %}
+
+{% block content%}
+    <h1>Login</h1>
+
+    <form method="POST" action="">{% csrf_token %}
+
+        <table>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" name="username" placeholder="Enter your Username" required></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="password" name="password" placeholder="Enter your password" required><td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="SignIn" name=""></td>
+        </tr>
+    </table>
+
+    </form>
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    {{form.errors}}
+
+    <p>Don't have an account? <a href="{% url 'registerpage' %}">SignUp</a></p>
+{% endblock content%}

@@ -1,0 +1,16 @@
+{% extends 'todo/base.html' %}
+
+{% block title%}Edit | {% endblock title%}
+
+
+{% block content%}
+    <form method="POST">{% csrf_token %}
+        <div>
+            <label>title:</label>
+            <input type="text" value="{{ task.title }}" name="title">
+        </div>
+        <div>
+            <button class="p-1 bg-emerald-400 text-white text-xl rounded-xl">Submit</button>
+        </div>
+    </form>
+{% endblock content%}
